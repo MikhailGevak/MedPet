@@ -1,6 +1,7 @@
 package com.med.orm.impl.preparation;
 
 import com.med.orm.impl.EntityBuilder;
+import com.med.orm.preparation.Preparation;
 public class PreparationBuilder extends EntityBuilder<Preparation>{
 	private String name;
 	private String description;
@@ -35,7 +36,7 @@ public class PreparationBuilder extends EntityBuilder<Preparation>{
 
 	@Override
 	public Preparation build() {
-		return new Preparation(this);
+		return new PreparationImpl(this);
 	}
 
 }

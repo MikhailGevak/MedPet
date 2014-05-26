@@ -4,10 +4,11 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.med.orm.impl.Entity;
+import com.med.orm.impl.EntityImpl;
+import com.med.orm.pharmacy.Pharmacy;
 
 @DatabaseTable(tableName = "pharmacy")
-public class Pharmacy implements Entity {
+public class PharmacyImpl extends EntityImpl implements Pharmacy{
 	@DatabaseField(id = true)
 	private String id;
 	@DatabaseField
@@ -15,11 +16,11 @@ public class Pharmacy implements Entity {
 	@DatabaseField
 	private String address;
 
-	public Pharmacy(){
+	public PharmacyImpl(){
 		 // ORMLite needs a no-arg constructor 
 	}
 	
-	public Pharmacy(PharmacyBuilder builder) {
+	public PharmacyImpl(PharmacyBuilder builder) {
 		this.name = builder.getName();
 		this.address = builder.getAddress();
 	}
