@@ -7,7 +7,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
 import com.sun.jersey.spi.container.servlet.ServletContainer;
 
 public class ServerMain {
-	public static void main() throws Exception{
+	public static void main(String[] args) throws Exception{
 		ServletHolder sh = new ServletHolder(ServletContainer.class);
 		sh.setInitParameter(
 				"com.sun.jersey.config.property.resourceConfigClass",
@@ -22,5 +22,10 @@ public class ServerMain {
 		context.addServlet(sh, "/*");
 		server.start();
 		server.join();
+		
+		System.out.println("Server started...");
+		System.in.read();
+		System.out.println("Server is stopping...");
+		server.stop();
 	}
 }
