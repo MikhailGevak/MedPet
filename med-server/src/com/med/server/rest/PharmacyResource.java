@@ -9,8 +9,8 @@ import javax.ws.rs.core.MediaType;
 @Path("/pharmacy")
 public class PharmacyResource {
 	 @GET
-	 @Path("{id}")
-	 @Produces(MediaType.TEXT_PLAIN)
+	 @Path("/{id}")
+	 @Produces(MediaType.TEXT_HTML)
 	 public String get(@PathParam("id")String id) {
 	        return id;
 	 }

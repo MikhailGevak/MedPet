@@ -22,10 +22,5 @@ public class ServerMain {
 		context.addServlet(sh, "/*");
 		server.start();
 		server.join();
-		
-		System.out.println("Server started...");
-		System.in.read();
-		System.out.println("Server is stopping...");
-		server.stop();
 	}
 }
