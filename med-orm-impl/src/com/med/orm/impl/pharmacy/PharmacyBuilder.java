@@ -1,8 +1,8 @@
 package com.med.orm.impl.pharmacy;
 
-import com.med.orm.impl.EntityBuilder;
+import com.med.orm.impl.AbstractEntityBuilder;
 
-public class PharmacyBuilder extends EntityBuilder<PharmacyImpl> {
+public class PharmacyBuilder extends AbstractEntityBuilder<PharmacyImpl> {
 	private String name;
 	private String address;
 	

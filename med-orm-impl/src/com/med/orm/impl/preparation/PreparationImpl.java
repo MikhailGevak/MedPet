@@ -4,11 +4,11 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.med.orm.impl.EntityImpl;
+import com.med.orm.impl.AbstractEntityImpl;
 import com.med.orm.preparation.Preparation;
 
 @DatabaseTable(tableName = "preparation")
-public class PreparationImpl extends EntityImpl implements Preparation{
+public class PreparationImpl extends AbstractEntityImpl implements Preparation{
 	@DatabaseField(id=true)
 	private String id;
 	@DatabaseField

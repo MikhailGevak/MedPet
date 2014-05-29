@@ -4,11 +4,11 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.med.orm.impl.EntityImpl;
+import com.med.orm.impl.AbstractEntityImpl;
 import com.med.orm.pharmacy.Pharmacy;
 
 @DatabaseTable(tableName = "pharmacy")
-public class PharmacyImpl extends EntityImpl implements Pharmacy{
+public class PharmacyImpl extends AbstractEntityImpl implements Pharmacy{
 	@DatabaseField(id = true)
 	private String id;
 	@DatabaseField
