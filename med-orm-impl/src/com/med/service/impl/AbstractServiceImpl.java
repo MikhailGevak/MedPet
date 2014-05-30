@@ -1,10 +1,11 @@
-package com.med.orm.impl;
+package com.med.service.impl;
 
 import java.sql.SQLException;
 
 import com.med.orm.Entity;
 import com.med.orm.Service;
 import com.med.orm.impl.dao.AbstractDAO;
+import com.med.orm.model.impl.AbstractEntityImpl;
 
 public abstract class AbstractServiceImpl<E extends Entity, I extends AbstractEntityImpl> implements Service<E>{
 	protected final AbstractDAO<I> dao;

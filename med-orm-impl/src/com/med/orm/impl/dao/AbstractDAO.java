@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.j256.ormlite.dao.BaseDaoImpl;
 import com.j256.ormlite.support.ConnectionSource;
-import com.med.orm.impl.AbstractEntityImpl;
+import com.med.orm.model.impl.AbstractEntityImpl;
 
 public abstract class AbstractDAO<E extends AbstractEntityImpl> extends
 		BaseDaoImpl<E, String> {

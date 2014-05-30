@@ -1,6 +1,6 @@
-package com.med.orm.impl.preparation;
+package com.med.orm.model.impl.builder;
 
-import com.med.orm.impl.AbstractEntityBuilder;
+import com.med.orm.model.impl.PreparationImpl;
 import com.med.orm.preparation.Preparation;
 public class PreparationBuilder extends AbstractEntityBuilder<Preparation>{
 	private String name;

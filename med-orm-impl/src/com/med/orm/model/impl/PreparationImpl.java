@@ -1,14 +1,21 @@
-package com.med.orm.impl.preparation;
+package com.med.orm.model.impl;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.med.orm.impl.AbstractEntityImpl;
+import com.med.orm.model.impl.builder.PreparationBuilder;
+import com.med.orm.pharmacy.Pharmacy;
+import com.med.orm.pharmacy.PharmacyAssociated;
 import com.med.orm.preparation.Preparation;
 
 @DatabaseTable(tableName = "preparation")
-public class PreparationImpl extends AbstractEntityImpl implements Preparation{
+public class PreparationImpl extends AbstractEntityImpl implements Preparation, PharmacyAssociated{
 	@DatabaseField(id=true)
 	private String id;
 	@DatabaseField
@@ -17,12 +24,15 @@ public class PreparationImpl extends AbstractEntityImpl implements Preparation{
 	private String description;
 	@DatabaseField
 	private String code;
+	@ForeignCollectionField
+	private Collection<PharmacyPreparation> pharmacyPreparations;
 	
 	public PreparationImpl(PreparationBuilder preparationBuilder) {
 		this.name = preparationBuilder.getName();
 		this.description = preparationBuilder.getDescription();
 		this.code = preparationBuilder.getCode();
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -48,5 +58,16 @@ public class PreparationImpl extends AbstractEntityImpl implements Preparation{
 	@Override
 	public String getId() {
 		return id;
+	}
+
+	@Override
+	public List<Pharmacy> getPharmacies() {
+		List<Pharmacy> pharmacies = new ArrayList<>();
+		
+		for(PharmacyPreparation oharmacyPreparation : pharmacyPreparations){
+			pharmacies.add(oharmacyPreparation.getPharmacy());
+		}
+		
+		return pharmacies;
 	}
 }

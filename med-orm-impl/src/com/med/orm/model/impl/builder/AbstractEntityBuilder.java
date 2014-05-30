@@ -1,4 +1,4 @@
-package com.med.orm.impl;
+package com.med.orm.model.impl.builder;
 
 import com.med.orm.Entity;
 
