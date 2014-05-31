@@ -8,7 +8,7 @@ import com.med.orm.model.impl.PreparationImpl;
 
 public class PreparationDAO extends AbstractDAO<PreparationImpl>{
 	@Inject
-	protected PreparationDAO(ConnectionSource connectionSource) throws SQLException {
+	public PreparationDAO(ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, PreparationImpl.class);
 	}
 }

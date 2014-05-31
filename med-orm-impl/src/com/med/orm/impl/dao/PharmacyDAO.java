@@ -8,7 +8,7 @@ import com.med.orm.model.impl.PharmacyImpl;
 
 public class PharmacyDAO extends AbstractDAO<PharmacyImpl>{
 	@Inject
-	protected PharmacyDAO(ConnectionSource connectionSource) throws SQLException {
+	public PharmacyDAO(ConnectionSource connectionSource) throws SQLException {
 		super(connectionSource, PharmacyImpl.class);
 	}
 }
