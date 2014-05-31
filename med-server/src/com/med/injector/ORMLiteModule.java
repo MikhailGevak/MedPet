@@ -14,8 +14,10 @@ import com.med.orm.pharmacy.PharmacyService;
 import com.med.orm.preparation.PreparationService;
 import com.med.service.impl.PharmacyServiceImpl;
 import com.med.service.impl.PreparationServiceImpl;
+import com.sun.jersey.guice.JerseyServletModule;
+import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
-public class ORMLiteModule extends ServletModule {
+public class ORMLiteModule extends JerseyServletModule {
 	
 	@Override
 	protected void configureServlets() {
@@ -29,6 +31,9 @@ public class ORMLiteModule extends ServletModule {
 			bind(PharmacyDAO.class).toInstance(
 					new PharmacyDAO(source));
 			bind(PreparationDAO.class).toInstance(new PreparationDAO(source));
+			
+			serve("/*").with(GuiceContainer.class);
+			 
 		} catch (SQLException | ClassNotFoundException e) {
 			e.printStackTrace();
 			throw new Error(e);

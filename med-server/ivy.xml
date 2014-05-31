@@ -18,14 +18,17 @@
 			<exclude org="org.jboss.weld" />
 		</dependency>
 		
+		<dependency org="com.sun.jersey.contribs" name="jersey-guice" rev="1.18.1">
+			<exclude org="org.jboss.weld" />
+		</dependency>
+		
 		<dependency org="org.apache.commons" name="commons-lang3"
 			rev="3.0" />
 			
-		<dependency org="com.google.inject" name="guice" rev="3.0"/>
-		
 		<dependency org="com.j256.ormlite" name="ormlite-core" rev="4.48"/>
 	    <dependency org="com.j256.ormlite" name="ormlite-jdbc" rev="4.48"/>
 	    <dependency org="com.google.inject.extensions" name="guice-servlet" rev="3.0"/>
 	    <dependency org="org.xerial" name="sqlite-jdbc" rev="3.7.2"/>
+	    
 	</dependencies>
 </ivy-module>

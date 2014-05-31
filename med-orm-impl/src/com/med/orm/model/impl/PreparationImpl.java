@@ -27,6 +27,10 @@ public class PreparationImpl extends AbstractEntityImpl implements Preparation, 
 	@ForeignCollectionField
 	private Collection<PharmacyPreparation> pharmacyPreparations;
 	
+	public PreparationImpl(){
+		// ORMLite needs a no-arg constructor
+	}
+	
 	public PreparationImpl(PreparationBuilder preparationBuilder) {
 		this.name = preparationBuilder.getName();
 		this.description = preparationBuilder.getDescription();

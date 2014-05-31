@@ -10,20 +10,24 @@ public class PharmacyPreparation {
 	@DatabaseField(id = true)
 	private String id;
 	@DatabaseField(foreign=true)
-	private Pharmacy pharmacy;
+	private PharmacyImpl pharmacy;
 	@DatabaseField(foreign=true)
-	private Preparation preparation;
+	private PreparationImpl preparation;
+	
+	public PharmacyPreparation(){
+		// ORMLite needs a no-arg constructor
+	}
 	
 	public Pharmacy getPharmacy() {
 		return pharmacy;
 	}
-	public void setPharmacy(Pharmacy pharmacy) {
+	public void setPharmacy(PharmacyImpl pharmacy) {
 		this.pharmacy = pharmacy;
 	}
 	public Preparation getPreparation() {
 		return preparation;
 	}
-	public void setPreparation(Preparation preparation) {
+	public void setPreparation(PreparationImpl preparation) {
 		this.preparation = preparation;
 	}
 	public String getId() {
