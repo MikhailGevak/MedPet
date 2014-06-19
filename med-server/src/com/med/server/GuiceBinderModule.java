@@ -57,7 +57,7 @@ public class GuiceBinderModule extends JerseyServletModule {
 
 		parameters
 				.put(PackagesResourceConfig.PROPERTY_PACKAGES,
-						"com.sysiq.shoppingguide.app.resources;org.codehaus.jackson.jaxrs");
+						"com.med.server.rest;org.codehaus.jackson.jaxrs");
 
 		parameters.put("com.sun.jersey.config.feature.Trace", "true");
 		serve("/*").with(GuiceContainer.class, parameters);
