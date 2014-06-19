@@ -1,6 +1,6 @@
 package com.med.server.rest;
 
-import java.sql.SQLException;
+import java.util.Arrays;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -25,10 +25,11 @@ public class PharmacyResource {
 	 public String get(@PathParam("id")String id) {
 		 try{
 			 Pharmacy pharmacy = pharmacyService.getEntityById(id);   
+			 if (pharmacy == null) return "(null)";
 			 return pharmacy.toString();
-		 }catch(SQLException e){
-			 System.out.println(e);
-			 return e.getMessage();
+		 }catch(Exception e){
+			 e.printStackTrace();
+			 return e.getLocalizedMessage();
 		 }
 	 }
 }
