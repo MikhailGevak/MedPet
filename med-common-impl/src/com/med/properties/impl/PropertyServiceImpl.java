@@ -1,5 +1,7 @@
 package com.med.properties.impl;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.Properties;
 
 import com.med.properties.DatabaseProperties;
@@ -13,6 +15,12 @@ public class PropertyServiceImpl implements PropertyService {
 	
 	public PropertyServiceImpl(){
 		load(new Properties());
+	}
+	
+	public PropertyServiceImpl(InputStream stream) throws IOException{
+		Properties properties = new Properties();
+		properties.load(stream);
+		load(properties);
 	}
 	
 	public PropertyServiceImpl(Properties properties){
