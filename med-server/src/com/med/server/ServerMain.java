@@ -1,11 +1,13 @@
 package com.med.server;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.EnumSet;
+import java.util.Properties;
 
 import javax.servlet.DispatcherType;
-import javax.ws.rs.core.UriBuilder;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
@@ -14,8 +16,12 @@ import com.google.inject.servlet.GuiceFilter;
 
 public class ServerMain {
 	
+	private static final String DEFAULT_PROPERTIES_RESOURCE = "default.properties";
+
 	public static void main(String[] args) throws Exception {
-		ExtendedGuiceServletContextListener guiceServlet = new ExtendedGuiceServletContextListener();
+		Properties properties = loadProperties(args);
+		
+		ExtendedGuiceServletContextListener guiceServlet = new ExtendedGuiceServletContextListener(properties);
         
 		Server appServer = createSimpleJettyServer(guiceServlet);
     	appServer.start();
@@ -28,20 +34,20 @@ public class ServerMain {
         System.out.println("Server stopped");
     }    
     
-	public static Server createSimpleJettyServer(ExtendedGuiceServletContextListener guiceConfig){
-		String contextPath = "";
-		String serverPort = "8888";
+	private static Properties loadProperties(String[] args) throws IOException {
+		InputStream inputStream = null;
 		
-		URI uri = UriBuilder.fromPath("http://localhost:" + serverPort + "/" + contextPath ).build();
-	
-		return createSimpleJettyServer(guiceConfig, uri);
+		if (args == null || args.length == 0){
+			inputStream = ClassLoader.class.getResourceAsStream(DEFAULT_PROPERTIES_RESOURCE);
+		}
+		
+		Properties properties = new Properties();
+		properties.load(inputStream);
+		return properties;
 	}
-   
-    public static Server createSimpleJettyServer(ExtendedGuiceServletContextListener guiceConfig, URI uri, String baseDir) throws IOException{
-		return createSimpleJettyServer(guiceConfig, uri);
-    }
-    
-    private static Server createSimpleJettyServer(ExtendedGuiceServletContextListener guiceConfig, URI uri){
+
+	private static Server createSimpleJettyServer(ExtendedGuiceServletContextListener guiceConfig) throws URISyntaxException{
+		URI uri = guiceConfig.getServeruRI();
     	Server server = new Server(uri.getPort());
     	
         ServletContextHandler root = new ServletContextHandler(server, uri.getPath());
