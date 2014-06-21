@@ -16,7 +16,7 @@ import com.google.inject.servlet.GuiceFilter;
 
 public class ServerMain {
 	
-	private static final String DEFAULT_PROPERTIES_RESOURCE = "default.properties";
+	private static final String DEFAULT_PROPERTIES_RESOURCE = "/default.properties";
 
 	public static void main(String[] args) throws Exception {
 		Properties properties = loadProperties(args);
@@ -47,7 +47,7 @@ public class ServerMain {
 	}
 
 	private static Server createSimpleJettyServer(ExtendedGuiceServletContextListener guiceConfig) throws URISyntaxException{
-		URI uri = guiceConfig.getServeruRI();
+		URI uri = guiceConfig.getServerURI();
     	Server server = new Server(uri.getPort());
     	
         ServletContextHandler root = new ServletContextHandler(server, uri.getPath());

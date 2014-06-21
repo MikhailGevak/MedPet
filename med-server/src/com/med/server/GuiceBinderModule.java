@@ -32,6 +32,7 @@ public class GuiceBinderModule extends JerseyServletModule {
 	protected final void configureServlets() {
 		PropertyService propertiesService = new PropertyServiceImpl(properties);
 
+		bind(PropertyService.class).toInstance(propertiesService);
 		configureConnections(propertiesService.getDatabaseProperties());
 
 		bind(GuiceContainer.class);

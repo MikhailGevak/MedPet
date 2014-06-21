@@ -42,7 +42,7 @@ public class ExtendedGuiceServletContextListener extends
 		return Guice.createInjector(new GuiceBinderModule(properties));
 	}
 
-	public URI getServeruRI() throws URISyntaxException {
+	public URI getServerURI() throws URISyntaxException {
 		return getInjector().getInstance(PropertyService.class).getServerProperties().getServerURI();
 	}
 }
