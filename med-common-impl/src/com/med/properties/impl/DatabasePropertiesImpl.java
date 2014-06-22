@@ -5,7 +5,7 @@ import java.util.Properties;
 import com.med.properties.DatabaseProperties;
 
 public class DatabasePropertiesImpl implements DatabaseProperties {
-	private static final String SERVER_DATABASE_PROPERTY = "med.server.database";
+	private static final String SERVER_DATABASE_PROPERTY = "med.database";
 	private String databaseURI;
 	
 	public DatabasePropertiesImpl(Properties properties){

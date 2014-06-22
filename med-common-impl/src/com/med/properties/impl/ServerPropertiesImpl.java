@@ -5,6 +5,7 @@ import java.net.URISyntaxException;
 import java.util.Properties;
 
 import com.med.properties.ServerProperties;
+import com.med.properties.ServletParameters;
 
 public class ServerPropertiesImpl implements ServerProperties{
 	private static final String SERVER_PORT_PROPERTY = "med.server.port";

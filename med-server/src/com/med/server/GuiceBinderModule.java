@@ -40,7 +40,7 @@ public class GuiceBinderModule extends JerseyServletModule {
 		bind(PreparationService.class).to(PreparationServiceImpl.class);
 		bind(PharmacyDAO.class);
 		bind(PreparationDAO.class);
-
+/*
 		Map<String, String> parameters = new HashMap<String, String>();
 		parameters.put("com.sun.jersey.spi.container.ContainerRequestFilters",
 				"com.sun.jersey.api.container.filter.LoggingFilter");
@@ -50,8 +50,9 @@ public class GuiceBinderModule extends JerseyServletModule {
 		parameters.put(PackagesResourceConfig.PROPERTY_PACKAGES,
 				"com.med.server.rest;org.codehaus.jackson.jaxrs");
 
-		parameters.put("com.sun.jersey.config.feature.Trace", "true");
-		serve("/*").with(GuiceContainer.class, parameters);
+s		parameters.put("com.sun.jersey.config.feature.Trace", "true");
+	*/
+		serve("/*").with(GuiceContainer.class, propertiesService.getServletParameters().getParameters());
 	}
 
 	protected void configureConnections(DatabaseProperties properties) {

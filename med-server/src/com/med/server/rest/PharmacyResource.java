@@ -1,7 +1,5 @@
 package com.med.server.rest;
 
-import java.util.Arrays;
-
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
