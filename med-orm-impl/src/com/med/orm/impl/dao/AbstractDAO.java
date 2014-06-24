@@ -18,4 +18,6 @@ public abstract class AbstractDAO<E extends AbstractEntityImpl> extends
 	public List<E> getAll() throws SQLException {
 		return this.queryForAll();
 	}
+	
+	public abstract void initialPrepareData() throws SQLException;
 }

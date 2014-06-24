@@ -38,7 +38,7 @@ public class ORMModule implements Module {
 
 	private ConnectionSource createConnectionSource() throws SQLException,
 			ClassNotFoundException {
-		Class.forName("org.sqlite.JDBC");
+		Class.forName(org.sqlite.JDBC.class.getName());
 		return new JdbcConnectionSource(databaseProperties.getDatabaseURI());
 	}
 
