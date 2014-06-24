@@ -1,76 +1,23 @@
 package com.med.server;
 
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Properties;
 
-import com.j256.ormlite.support.ConnectionSource;
-import com.med.injector.DBHelper;
-import com.med.orm.impl.dao.PharmacyDAO;
-import com.med.orm.impl.dao.PreparationDAO;
-import com.med.orm.pharmacy.PharmacyService;
-import com.med.orm.preparation.PreparationService;
-import com.med.properties.DatabaseProperties;
 import com.med.properties.PropertyService;
-import com.med.properties.impl.PropertyServiceImpl;
-import com.med.service.impl.PharmacyServiceImpl;
-import com.med.service.impl.PreparationServiceImpl;
-import com.sun.jersey.api.core.PackagesResourceConfig;
 import com.sun.jersey.guice.JerseyServletModule;
 import com.sun.jersey.guice.spi.container.servlet.GuiceContainer;
 
 public class GuiceBinderModule extends JerseyServletModule {
-	private final Properties properties;
+	private final PropertyService propertiesService;
 
-	public GuiceBinderModule(Properties properties)
+	public GuiceBinderModule(PropertyService propertiesService)
 			throws ClassNotFoundException, SQLException {
-		this.properties = properties;
+		this.propertiesService = propertiesService;
 	}
 
 	@Override
 	protected final void configureServlets() {
-		PropertyService propertiesService = new PropertyServiceImpl(properties);
-
-		bind(PropertyService.class).toInstance(propertiesService);
-		configureConnections(propertiesService.getDatabaseProperties());
-
-		bind(GuiceContainer.class);
-		bind(PharmacyService.class).to(PharmacyServiceImpl.class);
-		bind(PreparationService.class).to(PreparationServiceImpl.class);
-		bind(PharmacyDAO.class);
-		bind(PreparationDAO.class);
-/*
-		Map<String, String> parameters = new HashMap<String, String>();
-		parameters.put("com.sun.jersey.spi.container.ContainerRequestFilters",
-				"com.sun.jersey.api.container.filter.LoggingFilter");
-		parameters.put("com.sun.jersey.spi.container.ContainerResponseFilters",
-				"com.sun.jersey.api.container.filter.LoggingFilter");
-
-		parameters.put(PackagesResourceConfig.PROPERTY_PACKAGES,
-				"com.med.server.rest;org.codehaus.jackson.jaxrs");
-
-s		parameters.put("com.sun.jersey.config.feature.Trace", "true");
-	*/
+		bind(PropertyService.class).toInstance(propertiesService);	
+	
 		serve("/*").with(GuiceContainer.class, propertiesService.getServletParameters().getParameters());
-	}
-
-	protected void configureConnections(DatabaseProperties properties) {
-		try {
-			ConnectionSource connectionSource = initConnection(properties);
-			bind(ConnectionSource.class).toInstance(connectionSource);
-
-			DBHelper.prepareTables(connectionSource);
-		} catch (SQLException | ClassNotFoundException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	protected ConnectionSource initConnection(
-			DatabaseProperties databaseProperties) throws SQLException,
-			ClassNotFoundException {
-		return DBHelper
-				.getConnectionSource(databaseProperties.getDatabaseURI());
 	}
 }

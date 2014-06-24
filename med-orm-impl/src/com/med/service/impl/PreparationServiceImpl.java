@@ -3,11 +3,11 @@ package com.med.service.impl;
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.med.model.preparation.Preparation;
+import com.med.model.preparation.PreparationAssociated;
+import com.med.model.preparation.PreparationService;
 import com.med.orm.impl.dao.PreparationDAO;
 import com.med.orm.model.impl.PreparationImpl;
-import com.med.orm.preparation.Preparation;
-import com.med.orm.preparation.PreparationAssociated;
-import com.med.orm.preparation.PreparationService;
 
 public class PreparationServiceImpl extends AbstractServiceImpl<Preparation, PreparationImpl> implements PreparationService{
 

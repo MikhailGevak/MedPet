@@ -1,4 +1,4 @@
-package com.med.orm.pharmacy;
+package com.med.model.pharmacy;
 
 import java.util.List;
 

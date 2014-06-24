@@ -3,11 +3,11 @@ package com.med.service.impl;
 import java.util.List;
 
 import com.google.inject.Inject;
+import com.med.model.pharmacy.Pharmacy;
+import com.med.model.pharmacy.PharmacyAssociated;
+import com.med.model.pharmacy.PharmacyService;
 import com.med.orm.impl.dao.PharmacyDAO;
 import com.med.orm.model.impl.PharmacyImpl;
-import com.med.orm.pharmacy.Pharmacy;
-import com.med.orm.pharmacy.PharmacyAssociated;
-import com.med.orm.pharmacy.PharmacyService;
 
 public class PharmacyServiceImpl extends AbstractServiceImpl<Pharmacy, PharmacyImpl> implements PharmacyService{
 

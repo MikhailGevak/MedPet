@@ -9,10 +9,10 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.field.ForeignCollectionField;
 import com.j256.ormlite.table.DatabaseTable;
+import com.med.model.pharmacy.Pharmacy;
+import com.med.model.preparation.Preparation;
+import com.med.model.preparation.PreparationAssociated;
 import com.med.orm.model.impl.builder.PharmacyBuilder;
-import com.med.orm.pharmacy.Pharmacy;
-import com.med.orm.preparation.Preparation;
-import com.med.orm.preparation.PreparationAssociated;
 
 @DatabaseTable(tableName = "pharmacy")
 public class PharmacyImpl extends AbstractEntityImpl implements Pharmacy,

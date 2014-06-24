@@ -2,8 +2,8 @@ package com.med.service.impl;
 
 import java.sql.SQLException;
 
-import com.med.orm.Entity;
-import com.med.orm.Service;
+import com.med.model.Entity;
+import com.med.model.Service;
 import com.med.orm.impl.dao.AbstractDAO;
 import com.med.orm.model.impl.AbstractEntityImpl;
 

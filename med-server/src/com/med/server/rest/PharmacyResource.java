@@ -7,8 +7,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import com.google.inject.Inject;
-import com.med.orm.pharmacy.Pharmacy;
-import com.med.orm.pharmacy.PharmacyService;
+import com.med.model.pharmacy.Pharmacy;
+import com.med.model.pharmacy.PharmacyService;
 
 @Path("/pharmacy")
 public class PharmacyResource {

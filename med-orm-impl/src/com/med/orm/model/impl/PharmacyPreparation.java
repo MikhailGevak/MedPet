@@ -2,8 +2,8 @@ package com.med.orm.model.impl;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
-import com.med.orm.pharmacy.Pharmacy;
-import com.med.orm.preparation.Preparation;
+import com.med.model.pharmacy.Pharmacy;
+import com.med.model.preparation.Preparation;
 
 @DatabaseTable(tableName="pharmacy_preparation")
 public class PharmacyPreparation {

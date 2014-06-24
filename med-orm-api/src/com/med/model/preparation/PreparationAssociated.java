@@ -1,4 +1,4 @@
-package com.med.orm.preparation;
+package com.med.model.preparation;
 
 import java.util.List;
 

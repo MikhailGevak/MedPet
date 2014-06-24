@@ -1,4 +1,4 @@
-package com.med.orm;
+package com.med.model;
 
 import java.sql.SQLException;
 

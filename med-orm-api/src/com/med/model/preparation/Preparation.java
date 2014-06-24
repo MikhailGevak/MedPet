@@ -1,6 +1,6 @@
-package com.med.orm.preparation;
+package com.med.model.preparation;
 
-import com.med.orm.Entity;
+import com.med.model.Entity;
 
 public interface Preparation extends Entity {
 	String getName();
