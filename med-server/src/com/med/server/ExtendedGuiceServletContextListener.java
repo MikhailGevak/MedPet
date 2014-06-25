@@ -8,7 +8,6 @@ import java.util.Properties;
 
 import com.google.inject.Guice;
 import com.google.inject.Injector;
-import com.google.inject.Module;
 import com.google.inject.servlet.GuiceServletContextListener;
 import com.med.orm.injector.ORMModule;
 import com.med.properties.PropertyService;
@@ -43,16 +42,19 @@ public class ExtendedGuiceServletContextListener extends
 	protected Injector createInjector(Properties properties)
 			throws SQLException, IOException, ClassNotFoundException {
 		PropertyService propertiesService = new PropertyServiceImpl(properties);
-		
-		GuiceBinderModule jerseyModule = new GuiceBinderModule(propertiesService);
-		ORMModule ormModule = new ORMModule(propertiesService.getDatabaseProperties());
-		
-		Injector injector = Guice.createInjector(jerseyModule,ormModule);
-		
+
+		GuiceBinderModule jerseyModule = new GuiceBinderModule(
+				propertiesService);
+		ORMModule ormModule = new ORMModule(
+				propertiesService.getDatabaseProperties());
+
+		Injector injector = Guice.createInjector(jerseyModule, ormModule);
+
 		return injector;
 	}
 
-		public URI getServerURI() throws URISyntaxException {
-		return getInjector().getInstance(PropertyService.class).getServerProperties().getServerURI();
+	public URI getServerURI() throws URISyntaxException {
+		return getInjector().getInstance(PropertyService.class)
+				.getServerProperties().getServerURI();
 	}
 }
