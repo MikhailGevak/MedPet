@@ -1,8 +1,8 @@
 package com.med.orm.model.impl.builder;
 
-import com.med.orm.model.impl.PharmacyImpl;
+import com.med.model.pharmacy.Pharmacy;
 
-public class PharmacyBuilder extends AbstractEntityBuilder<PharmacyImpl> {
+public class PharmacyBuilder extends AbstractEntityBuilder<Pharmacy> {
 	private String name;
 	private String address;
 	
@@ -22,10 +22,5 @@ public class PharmacyBuilder extends AbstractEntityBuilder<PharmacyImpl> {
 	public PharmacyBuilder setAddress(String address){
 		this.address = address;
 		return this;
-	}
-
-	@Override
-	public PharmacyImpl build() {
-		return new PharmacyImpl(this);
 	}
 }

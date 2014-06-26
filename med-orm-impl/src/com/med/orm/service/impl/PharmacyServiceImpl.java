@@ -1,4 +1,4 @@
-package com.med.service.impl;
+package com.med.orm.service.impl;
 
 import java.util.List;
 

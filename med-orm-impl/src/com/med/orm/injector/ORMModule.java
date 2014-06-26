@@ -10,9 +10,9 @@ import com.med.model.pharmacy.PharmacyService;
 import com.med.model.preparation.PreparationService;
 import com.med.orm.impl.dao.PharmacyDAO;
 import com.med.orm.impl.dao.PreparationDAO;
+import com.med.orm.service.impl.PharmacyServiceImpl;
+import com.med.orm.service.impl.PreparationServiceImpl;
 import com.med.properties.DatabaseProperties;
-import com.med.service.impl.PharmacyServiceImpl;
-import com.med.service.impl.PreparationServiceImpl;
 
 public class ORMModule implements Module {
 	private DatabaseProperties databaseProperties;

@@ -1,4 +1,4 @@
-package com.med.service.impl;
+package com.med.orm.service.impl;
 
 import java.sql.SQLException;
 
@@ -17,13 +17,29 @@ public abstract class AbstractServiceImpl<E extends Entity, I extends AbstractEn
 	}
 	
 	@Override
-	public E createEntity(E entity) throws SQLException {
-		return convertToInterface(dao.createIfNotExists(convertToImpl(entity)));
+	public E createEntity(E entity) throws ServiceException {
+		E newEntity;
+		try {
+			newEntity = convertToInterface(dao.createIfNotExists(convertToImpl(entity)));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ServiceException(e);
+		}
+		
+		return newEntity;
 	}
 
 	@Override
-	public E getEntityById(String id) throws SQLException {
-		return convertToInterface(dao.queryForId(id));
+	public E getEntityById(String id) throws ServiceException {
+		E entity;
+		try {
+			entity = convertToInterface(dao.queryForId(id));
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ServiceException(e);
+		}
+		
+		return entity;
 	}
 
 
